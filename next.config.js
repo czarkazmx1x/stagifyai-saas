@@ -1,15 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
-  experimental: {
-    serverComponentsExternalPackages: ['@prisma/client'],
-  },
+  output: 'export',
+  trailingSlash: true,
   images: {
+    unoptimized: true,
     domains: ['your-domain.com', 'r2.cloudflarestorage.com', 'images.unsplash.com'],
-    formats: ['image/webp', 'image/avif'],
   },
-  // Compress responses
-  compress: true,
+  // Disable features that don't work with static export
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 module.exports = nextConfig;

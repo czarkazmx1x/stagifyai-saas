@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { initializeFalAI } from '@/lib/fal-ai';
+import { FalAIService } from '@/lib/fal-ai';
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,11 +12,8 @@ export async function POST(request: NextRequest) {
       }, { status: 400 });
     }
 
-    // Initialize FAL AI service with the provided key
-    initializeFalAI(apiKey);
-
-    // Test the API key
-    const falAI = initializeFalAI(apiKey);
+    // Create FAL AI service instance with the provided key
+    const falAI = new FalAIService(apiKey);
     
     try {
       const isValid = await falAI.validateApiKey();

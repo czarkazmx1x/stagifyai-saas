@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StagifyAI - Virtual Staging Platform</title>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -47,6 +48,9 @@
             font-weight: 600;
             margin: 0.5rem;
         }
+        .progress {
+            background: #f59e0b;
+        }
     </style>
 </head>
 <body>
@@ -60,14 +64,34 @@
             <div class="badge">✅ D1 Database Ready</div>
             <div class="badge">✅ R2 Storage Ready</div>
             <div class="badge">✅ GitHub Repository Ready</div>
+            <div class="badge progress">🔄 Next.js Build In Progress</div>
             
             <p style="margin-top: 1.5rem;">
-                Full Next.js application deployment in progress...<br>
-                <small>This temporary page confirms your Cloudflare Pages project is working.</small>
+                <strong>Project URL:</strong> stagifyai-saas.pages.dev<br>
+                <strong>Status:</strong> Infrastructure deployed, configuring Next.js app...<br>
+                <small>SSL certificates are propagating. This may take a few minutes.</small>
             </p>
         </div>
         
-        <p><strong>Next.js application coming soon!</strong></p>
+        <div class="status">
+            <h3>🔧 Technical Details</h3>
+            <p style="font-size: 0.9rem; text-align: left;">
+                • Database ID: 5a786b75-d719-4e0d-9709-2eeda52011f1<br>
+                • Storage Bucket: stagifyai-storage<br>
+                • Build System: Next.js 15 + TypeScript<br>
+                • Framework: React + Tailwind CSS<br>
+                • Authentication: NextAuth.js + Google OAuth
+            </p>
+        </div>
+        
+        <p><strong>Full application deployment coming next!</strong></p>
     </div>
+
+    <script>
+        // Auto-refresh every 30 seconds to check for updates
+        setTimeout(() => {
+            window.location.reload();
+        }, 30000);
+    </script>
 </body>
 </html>

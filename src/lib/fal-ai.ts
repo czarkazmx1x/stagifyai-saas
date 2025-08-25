@@ -206,8 +206,14 @@ let falAIService: FalAIService | null = null;
 export function getFalAIService(): any {
   // For development testing, use mock service
   if (process.env.NODE_ENV === 'development' && !process.env.FAL_AI_API_KEY) {
-    const { getFalAIService: getMockService } = require('./fal-ai-mock');
-    return getMockService();
+    // Use dynamic import for mock service
+    try {
+      const mockModule = import('./fal-ai-mock');
+      return mockModule.then(module => module.getFalAIService());
+    } catch {
+      // If mock service doesn't exist, throw error
+      throw new Error('FAL_AI_API_KEY environment variable is not set and mock service is unavailable');
+    }
   }
   
   if (!falAIService) {

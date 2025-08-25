@@ -1,5 +1,5 @@
 name = "stagifyai"
-main = "src/index.ts"
+pages_build_output_dir = ".next"
 compatibility_date = "2024-01-01"
 
 [env.production]
@@ -16,11 +16,3 @@ database_id = "5a786b75-d719-4e0d-9709-2eeda52011f1"
 [[r2_buckets]]
 binding = "STORAGE"
 bucket_name = "stagifyai-storage"
-
-[build]
-command = "npm run build"
-
-[build.upload]
-format = "modules"
-dir = ".next"
-main = "./server.js"
